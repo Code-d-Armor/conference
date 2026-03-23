@@ -11,13 +11,13 @@ menu:
     url: 'https://devfest-perros-guirec.tpopsite.com/'
     tooltip: "Accéder à la boutique"
   - title: Sponsoring
-    url: '/sponsors'
+    url: '/sponsors.html'
     tooltip: "Devenir sponsor"
   - title: Archives
     url: '/archives'
     tooltip: "Accéder aux archives"
   - title: À propos
-    url: './a-propos'
+    url: './a-propos.html'
     tooltip: "En savoir plus sur l'événement"
   - title: ""
     url: 'https://www.linkedin.com/company/code-d-armor/'
