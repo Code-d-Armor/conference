@@ -1,14 +1,20 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version Change: N/A (new) → 1.0.0
-Modified Principles: None (initial creation)
-Added Sections: All (initial creation)
+Version Change: 1.0.0 → 1.1.0
+Modified Principles:
+  - III: Year-Based Editioning (corrected archive command)
+  - V: Convention Over Configuration (clarified WebP requirement)
+Added Principles:
+  - VI. Performance Optimization (new)
+Added Sections:
+  - Build Performance Standards subsection under Additional Constraints
 Removed Sections: None
 Templates Requiring Updates:
-  - ✅ .specify/templates/plan-template.md (Constitution Check section aligns)
+  - ✅ .specify/templates/plan-template.md (already aligned)
   - ✅ .specify/templates/spec-template.md (no changes needed)
   - ✅ .specify/templates/tasks-template.md (no changes needed)
+  - ✅ CLAUDE.md (performance section exists, aligned)
 Follow-up TODOs: None
 -->
 
@@ -27,7 +33,7 @@ All dynamic content (speakers, agenda, sponsors) MUST be defined in YAML front m
 **Rationale**: Centralizing content in YAML makes updates accessible to non-developers and enables conditional rendering of sections. It separates content from presentation.
 
 ### III. Year-Based Editioning
-Each conference edition MUST be self-contained under `assets/YYYY/`. Speaker photos, custom styles, and edition-specific assets MUST reside in year-organized folders. Past editions MUST be archived using the `bundle exec archive` command.
+Each conference edition MUST be self-contained under `assets/YYYY/`. Speaker photos, custom styles, and edition-specific assets MUST reside in year-organized folders. Past editions MUST be archived using the `bundle exec archive YYYY` command.
 
 **Rationale**: This enables historical preservation of past conferences while keeping the current edition clean. Archiving creates immutable snapshots that won't break when site structure changes.
 
@@ -38,12 +44,23 @@ The Jekyll build (`bundle exec jekyll build`) MUST pass without errors or unhand
 
 ### V. Convention Over Configuration
 File naming and location MUST follow established conventions:
-- Speaker photos: `assets/YYYY/photos_speakers/filename.webp`
-- Sponsor logos: `assets/img/logos_sponsors/`
+- Speaker photos: `assets/YYYY/photos_speakers/filename.webp` (WebP format required)
+- Sponsor logos: `assets/img/logos_sponsors/` (WebP preferred, SVG acceptable)
+- Gallery images: WebP with responsive sizes (400w, 800w, 1200w)
 - Layouts: `_layouts/` with names matching `layout:` front matter
 - Includes: `_includes/` referenced by `{% include %}`
 
-**Rationale**: Consistent naming enables predictable behavior and makes the codebase maintainable by multiple contributors over years.
+**Rationale**: Consistent naming enables predictable behavior and makes the codebase maintainable by multiple contributors over years. WebP format provides superior compression while maintaining quality.
+
+### VI. Performance Optimization
+All changes MUST respect the established performance optimizations:
+- Images MUST use `loading="lazy"` and `decoding="async"` attributes
+- Critical CSS MUST remain inline in `<head>`
+- Non-critical CSS MUST load asynchronously
+- JavaScript MUST use `defer` attribute
+- Image dimensions (width/height) MUST be specified to prevent layout shift
+
+**Rationale**: Core Web Vitals impact user experience and search rankings. The site has achieved significant performance gains (42% size reduction, 36% faster builds) that must be preserved.
 
 ## Additional Constraints
 
@@ -59,6 +76,9 @@ All features MUST be compatible with GitHub Pages deployment constraints:
 ### Accessibility Standards
 HTML output MUST maintain semantic structure and include appropriate ARIA labels where needed. Color contrast and keyboard navigation should be considered for all interactive elements.
 
+### Build Performance Standards
+The Jekyll build time SHOULD remain under 10 seconds for development builds. Exclusions in `_config.yml` MUST be used to prevent processing of archived assets. Large image files MUST be optimized before commit.
+
 ## Development Workflow
 
 ### Local Testing Required
@@ -73,6 +93,13 @@ When adding speakers or agenda items:
 2. Place assets in correct year-organized folders
 3. Verify section renders correctly (conditional display)
 4. Run full Jekyll build to validate
+
+### Image Optimization Process
+When adding new images:
+1. Place source files in appropriate directory
+2. Run `./scripts/optimize-images.sh` to generate WebP versions
+3. Update references to use `.webp` extension
+4. Verify images display correctly at all responsive sizes
 
 ### Archiving Procedure
 When an edition concludes:
@@ -90,4 +117,9 @@ This constitution governs all development practices for the DevFest Perros-Guire
 
 All pull requests MUST verify compliance with these principles. Complexity or new dependencies must be justified against the static-first architecture constraint.
 
-**Version**: 1.0.0 | **Ratified**: 2026-02-17 | **Last Amended**: 2026-02-17
+Version numbers follow semantic versioning:
+- **MAJOR**: Backward incompatible governance/principle removals or redefinitions
+- **MINOR**: New principle/section added or materially expanded guidance
+- **PATCH**: Clarifications, wording, typo fixes, non-semantic refinements
+
+**Version**: 1.1.0 | **Ratified**: 2026-02-17 | **Last Amended**: 2026-03-23
