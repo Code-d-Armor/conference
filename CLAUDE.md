@@ -137,6 +137,7 @@ Comment out or remove the section from `index.md` front matter to hide it. The l
 - YAML front matter in Markdown files (index.md) (001-speaker-videos)
 - Jekyll 4.x (Ruby-based static site generator), YAML, Liquid templates + jekyll_asset_pipeline (existing) (002-photo-gallery)
 - N/A (static file references) (002-photo-gallery)
+- N/A - YAML front matter in Markdown files (004-cfp-front-page)
 
 ## Recent Changes
 - 001-speaker-videos: Added Ruby 2.5+, Jekyll 4.x + Jekyll static site generator, jekyll_asset_pipeline plugin

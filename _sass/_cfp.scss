@@ -1,0 +1,141 @@
+// CFP Section Styles
+
+#cfp-info {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  position: relative;
+
+  .section-title {
+    margin-bottom: 10px;
+  }
+
+  .cfp-intro {
+    .lead {
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: #555;
+      line-height: 1.7;
+
+      em {
+        color: #e74c3c;
+        font-style: normal;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+// Key Dates Cards
+.key-date-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  height: 100%;
+  border: 2px solid transparent;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    border-color: #e74c3c;
+  }
+
+  .key-date-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+
+    i {
+      font-size: 28px;
+      color: #fff;
+    }
+  }
+
+  .key-date-label {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+
+  .key-date-value {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0;
+  }
+}
+
+// Best Practice Cards
+.best-practice-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  height: 100%;
+  transition: all 0.3s ease;
+  border-left: 4px solid #e74c3c;
+
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    transform: translateX(5px);
+  }
+
+  .best-practice-number {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+
+  .best-practice-content {
+    flex: 1;
+
+    h5 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .key-date-card {
+    margin-bottom: 20px;
+  }
+
+  .best-practice-card {
+    flex-direction: column;
+    text-align: center;
+
+    .best-practice-number {
+      margin: 0 auto;
+    }
+  }
+}

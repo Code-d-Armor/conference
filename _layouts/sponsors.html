@@ -24,7 +24,9 @@
         <div class="row">
           <div class="p-3 col text-lg-left text-center">
             {{ page.pageContent }}
+            {% if page.buttonDoc %}
             {% include button.html button=page.buttonDoc %}
+            {% endif %}
           </div>
         </div>
       </div>
