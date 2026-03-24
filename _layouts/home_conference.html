@@ -4,22 +4,12 @@
 
 {% include header.html %}
 {% include carrousel.html %}
-<section id="feedback" class="section-padding">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <!-- Section de retour d'expérience  -->
-        <div class="feedback-section mt-4 text-center">
-          <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">Donnez votre avis</h3>
-            <p>Votre avis nous aide à améliorer les prochaines éditions. <br/>Merci de prendre un instant pour remplir ce
-              court questionnaire.</p>
-            <a href="https://forms.gle/jAoU8kySB9VdxbCTA" class="btn btn-primary" target="_blank" rel="noopener">Ouvrir
-              le formulaire</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+
+<!-- Edito Section Start -->
+{% if page.Edito != null %}
+{% include edito.html params=page.Edito %}
+{% endif %}
+<!-- Edito Section End -->
 
 <!-- Section Intro Start -->
 <section id="program" class="section-padding">
@@ -47,6 +37,11 @@
 
 <!-- Intro Section Ends -->
 
+<!-- CFP Info Section Start -->
+{% if page.CFPInfo != null %}
+{% include cfp_info.html params=page.CFPInfo %}
+{% endif %}
+<!-- CFP Info Section End -->
 
 <!-- Call for Proposal Section Start -->
 {% if page.CallForProposal != null %}

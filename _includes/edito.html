@@ -1,0 +1,97 @@
+<section id="edito" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title-header text-center">
+                    <h2 class="section-title wow fadeInUp" data-wow-delay="0.2s">{{ include.params.title }}</h2>
+                </div>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <div class="row">
+            <div class="col-2 d-none-lg"></div>
+            <div class="col-8">
+                <div class="edito-introduction wow fadeInUp" data-wow-delay="0.3s">
+                    {{ include.params.introduction | markdownify }}
+                </div>
+            </div>
+            <div class="col-2 d-none-lg"></div>
+        </div>
+
+        <!-- Submission Guidelines -->
+        {% if include.params.submission_guidelines %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4 wow fadeInUp" data-wow-delay="0.2s">{{ include.params.submission_guidelines.title }}</h3>
+            </div>
+            <div class="col-2 d-none-lg"></div>
+            <div class="col-8">
+                <div class="table-responsive wow fadeInUp" data-wow-delay="0.3s">
+                    <table class="table table-bordered submission-guidelines">
+                        <tbody>
+                            {% for element in include.params.submission_guidelines.elements %}
+                            <tr>
+                                <th scope="row">{{ element.label }}</th>
+                                <td>{{ element.detail }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-center mt-4 wow fadeInUp" data-wow-delay="0.4s">
+                    <a href="/cfp-2026"
+                       class="btn btn-outline-primary btn-lg"
+                       target="_self">
+                        <i class="lni-info mr-2"></i>
+                        En savoir plus sur l'appel à intervenant
+                    </a>
+                </div>
+            </div>
+            <div class="col-2 d-none-lg"></div>
+        </div>
+        {% endif %}
+
+        <!-- Benefits -->
+        {% if include.params.benefits %}
+        <div class="row mt-5">
+            <div class="col-12">
+                <h3 class="text-center mb-4 wow fadeInUp" data-wow-delay="0.2s">{{ include.params.benefits.title }}</h3>
+            </div>
+            <div class="col-2 d-none-lg"></div>
+            <div class="col-8">
+                <div class="benefits-list wow fadeInUp" data-wow-delay="0.3s">
+                    <ul class="list-group list-group-flush">
+                        {% for benefit in include.params.benefits.items %}
+                        <li class="list-group-item">
+                            <i class="lni-check-mark-circle text-primary mr-2"></i>
+                            {{ benefit }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% if include.params.benefits.new_speaker_note %}
+                    <div class="new-speaker-note mt-3 p-3 bg-light rounded">
+                        <strong>Nouveau speaker ?</strong> {{ include.params.benefits.new_speaker_note }}
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="col-2 d-none-lg"></div>
+        </div>
+        {% endif %}
+
+        <!-- CFP Button -->
+        <div class="row mt-5">
+            <div class="col-12 text-center">
+                <a href="https://conference-hall.io/devfest-perros-guirec-2026"
+                   class="btn btn-primary btn-lg wow fadeInUp"
+                   data-wow-delay="0.3s"
+                   target="_blank"
+                   rel="noopener">
+                    <i class="lni-pencil mr-2"></i>
+                    Soumettre votre talk
+                </a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,373 @@
+// ========================================
+// DevFest Perros-Guirec 2026 - Coastal Modern Redesign
+// ========================================
+
+// Color Palette - Coastal Modern with Original Purple Accent
+:root {
+  --color-deep-navy: #1a2744;
+  --color-navy-light: #2d3e5f;
+  --color-sand: #f5f1eb;
+  --color-sand-dark: #e8e4de;
+  --color-primary: #633db7;
+  --color-primary-dark: #522d9e;
+  --color-white: #ffffff;
+  --color-text: #2d3748;
+  --color-text-light: #718096;
+  --color-granite: #a585d4;
+}
+
+// Typography
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+// Global Typography Updates
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.section-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.75rem;
+  font-weight: 600;
+  color: var(--color-deep-navy);
+  text-align: center;
+}
+
+// Hero Section Redesign
+#main-slide {
+  .carousel-caption {
+    h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+      opacity: 0.95;
+    }
+  }
+}
+
+// Buttons - Modern Style
+.btn {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  border-radius: 8px;
+  padding: 14px 32px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: none;
+
+  &-primary, &-common {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+    box-shadow: 0 4px 15px rgba(99, 61, 183, 0.3);
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(99, 61, 183, 0.4);
+    }
+  }
+
+  &-outline-primary {
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    background: transparent;
+
+    &:hover {
+      background: var(--color-primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+// CFP Info Section - Coastal Modern
+#cfp-info {
+  background: linear-gradient(180deg, var(--color-sand) 0%, var(--color-white) 100%);
+  padding: 80px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(26, 39, 68, 0.1), transparent);
+  }
+
+  .section-title {
+    color: var(--color-deep-navy);
+    margin-bottom: 50px;
+  }
+
+  .cfp-intro {
+    .lead {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--color-text-light);
+      line-height: 1.8;
+      max-width: 700px;
+      margin: 0 auto;
+
+      em {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-style: italic;
+        color: var(--color-primary);
+        font-weight: 500;
+      }
+    }
+  }
+}
+
+// Key Dates - Bento Grid Style
+.key-date-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 35px 25px;
+  box-shadow: 0 4px 20px rgba(26, 39, 68, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+  border: 1px solid rgba(26, 39, 68, 0.06);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-granite));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(26, 39, 68, 0.12);
+    border-color: rgba(99, 61, 183, 0.2);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .key-date-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+  }
+
+  .key-date-icon {
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-navy-light) 100%);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 8px 20px rgba(26, 39, 68, 0.2);
+
+    i {
+      font-size: 28px;
+      color: var(--color-white);
+    }
+  }
+
+  .key-date-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+  }
+
+  .key-date-value {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--color-deep-navy);
+    margin: 0;
+  }
+}
+
+// Best Practices - Editorial Cards
+.best-practice-card {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(26, 39, 68, 0.05);
+  display: flex;
+  align-items: flex-start;
+  gap: 18px;
+  height: 100%;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(26, 39, 68, 0.04);
+
+  &:hover {
+    box-shadow: 0 12px 30px rgba(26, 39, 68, 0.1);
+    transform: translateY(-4px);
+    border-color: rgba(224, 122, 95, 0.15);
+
+    .best-practice-number {
+      background: var(--color-primary);
+      color: var(--color-white);
+    }
+  }
+
+  .best-practice-number {
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
+    background: var(--color-sand);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+  }
+
+  .best-practice-content {
+    flex: 1;
+
+    h5 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--color-deep-navy);
+      margin-bottom: 8px;
+    }
+
+    p {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      color: var(--color-text-light);
+      line-height: 1.6;
+      margin: 0;
+    }
+  }
+}
+
+// Section headers
+h3 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  color: var(--color-deep-navy);
+  margin-bottom: 2rem;
+}
+
+// Counter Section - Coastal Dark
+.counter-section {
+  background: linear-gradient(135deg, var(--color-deep-navy) 0%, var(--color-navy-light) 100%);
+  padding: 80px 0;
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+
+  .counter {
+    p {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--color-white);
+    }
+
+    span {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .icon {
+      color: var(--color-primary);
+    }
+  }
+}
+
+// Partners Section
+#sponsors {
+  background: var(--color-white);
+  padding: 80px 0;
+
+  .section-title {
+    margin-bottom: 50px;
+  }
+
+  .sponsor-logo {
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+
+    &:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+  }
+}
+
+// Newsletter Section
+#newsletter {
+  background: linear-gradient(135deg, var(--color-sand) 0%, var(--color-sand-dark) 100%);
+  padding: 80px 0;
+
+  .section-title {
+    color: var(--color-deep-navy);
+
+    &::after {
+      background: var(--color-primary);
+    }
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2rem;
+  }
+
+  #main-slide .carousel-caption h1 {
+    font-size: 2.2rem;
+  }
+
+  .key-date-card {
+    margin-bottom: 20px;
+  }
+
+  .best-practice-card {
+    flex-direction: column;
+    text-align: center;
+
+    .best-practice-number {
+      margin: 0 auto;
+    }
+  }
+}
