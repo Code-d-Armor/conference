@@ -2,6 +2,7 @@
 # frozen_string_literal: true
 
 require 'fileutils'
+require 'pathname'
 
 if ARGV.empty?
   puts "Usage: bundle exec archive <folder>"
@@ -31,18 +32,39 @@ Dir.glob("#{build_path}/*").each do |file|
   File.directory?(file) ? FileUtils.cp_r(file, target) : FileUtils.cp(file, target)
 end
 
+# Get relative path from a file to the archive root
+def relative_prefix(file_path, archive_path)
+  file_dir = File.dirname(file_path)
+  rel_path = Pathname.new(file_dir).relative_path_from(Pathname.new(archive_path))
+  return '' if rel_path.to_s == '.'
+  rel_path.to_s.split('/').map { '..' }.join('/') + '/'
+end
+
 # Fix URLs in HTML/CSS/JS files
 puts "Fixing URLs..."
 Dir.glob("#{archive_path}/**/*.{html,css,js}").each do |file|
   content = File.read(file)
   original = content.dup
+  prefix = relative_prefix(file, archive_path)
 
-  content.gsub!(/href="\/assets\//, 'href="assets/')
-  content.gsub!(/href='\/assets\//, "href='assets/")
-  content.gsub!(/src="\/assets\//, 'src="assets/')
-  content.gsub!(/src='\/assets\//, "src='assets/")
-  content.gsub!(/url\("?\/(assets\/[^"\)]+)\)?/, 'url(\1)')
-  content.gsub!(/url\('?\/(assets\/[^'\)]+)\)?/, "url('\1')")
+  # Fix /assets/ paths -> relative assets/
+  content.gsub!(/href="\/assets\//, 'href="' + prefix + 'assets/')
+  content.gsub!(/href='\/assets\//, "href='" + prefix + "assets/")
+  content.gsub!(/src="\/assets\//, 'src="' + prefix + 'assets/')
+  content.gsub!(/src='\/assets\//, "src='" + prefix + "assets/")
+
+  # Fix other root-relative paths -> relative paths
+  # Use block form to properly handle backreferences
+  content.gsub!(/href="\/([^"]*)"/) { "href=\"#{prefix}#{$1}\"" }
+  content.gsub!(/href='\/([^']*)'/) { "href='#{prefix}#{$1}'" }
+  content.gsub!(/src="\/([^"]*)"/) { "src=\"#{prefix}#{$1}\"" }
+  content.gsub!(/src='\/([^']*)'/) { "src='#{prefix}#{$1}'" }
+
+  # Fix CSS url() patterns
+  # url(/assets/...) -> url(relative/assets/...)
+  content.gsub!(/url\(['"]?\/(assets\/[^'"\)]+)['"]?\)/) { "url(#{prefix}#{$1})" }
+  # url(/other-path) -> url(relative/other-path)
+  content.gsub!(/url\(['"]?\/([^'"\)]+)['"]?\)/) { "url(#{prefix}#{$1})" }
 
   File.write(file, content) if content != original
 end
@@ -56,7 +78,19 @@ if File.exist?('archives.md')
   unless content.include?(archive_url)
     display_name = "DevFest #{folder}"
     new_entry = "  - title: #{display_name}\n    url: #{archive_url}"
-    content = content.sub(/(archives:\n)/, "\1#{new_entry}\n")
+
+    # Try different patterns to find where to insert
+    if content =~ /archives:\s*\n/
+      # Standard format: archives:\n  - title: ...
+      content = content.sub(/(archives:\s*\n)/, '\\1' + "#{new_entry}\n")
+    elsif content =~ /archives_title:.*\n/
+      # Missing archives: key, add it after archives_title
+      content = content.sub(/(archives_title:.*\n)/) { "#{$1}archives:\n#{new_entry}\n" }
+    else
+      # Fallback: add before slidedecks
+      content = content.sub(/(slidedecks_title:)/, "archives:\n#{new_entry}\n\\1")
+    end
+
     File.write('archives.md', content)
     puts "Added to archives menu: #{display_name}"
   end
