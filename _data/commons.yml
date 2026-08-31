@@ -7,6 +7,9 @@ menu:
     url: '#infos'
   - title: "FAQ"
     url: '#faq'
+  - title: "Boutique"
+    url: 'https://devfest-perros-guirec.tpopsite.com/'
+    target: '_blank'
 
 newsletter:
   subscribe_url: https://codedarmor.us7.list-manage.com/subscribe?u=05474659d9a3ff4697f4fc41c&id=cc5063773c
