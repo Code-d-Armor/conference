@@ -338,8 +338,6 @@ Sponsoring:
       logo: assets/img/logos_sponsors/logo_orange-business.webp
     - name: Campus des Métiers et des Qualifications d'Excellence
       logo: assets/img/logos_sponsors/logo_campus-excellence.webp
-    - name: Lannion Trégor Communauté
-      logo: assets/img/logos_sponsors/logo_ltc.webp
     - name: Anticipa
       logo: assets/img/logos_sponsors/logo_anticipa.webp
     - name: Ville de Perros-Guirec
