@@ -39,6 +39,8 @@
 .btn-outline:hover { background: rgba(255,255,255,.18); }
 .btn-contrast { background: #fff; color: var(--primary); border-color: var(--primary); }
 .btn-contrast:hover { background: var(--primary); color: #fff; }
+.btn-disabled { background: #6b6b7a; color: #d9d9e0; border-color: #6b6b7a; cursor: not-allowed; opacity: .65; box-shadow: none; }
+.btn-disabled:hover { background: #6b6b7a; }
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; }
 
 // Chips
