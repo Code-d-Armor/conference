@@ -51,7 +51,7 @@ About:
   association_url: https://codedarmor.fr
   archives_url: /archives
   card:
-    edition: '05'
+    edition: '06'
     participants: 200+
     subtitle: 10 conférences · 2 quickies · 1 journée
 Agenda:
