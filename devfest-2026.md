@@ -1,6 +1,6 @@
 ---
 layout: home_conference
-permalink: /
+permalink: /devfest-2026/
 title: DevFest Perros-Guirec - 02 Octobre 2026
 thumbnail_url: /assets/2026/img/social-card/social-card.png
 Hero:
