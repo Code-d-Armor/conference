@@ -26,9 +26,13 @@ Hero:
     Du dev au super dev : 25 ans de métier face aux agents.
     45 minutes de talk, puis un échange ouvert et des pizzas.
 
-# Register: à ajouter dès que la billetterie de l'édition de décembre existe
-# (title / text / button1.url Billetweb). La section est rendue par _includes/tickets.html
-# sur le gabarit home_conference ; ici, pas de CTA d'inscription tant que l'URL n'existe pas.
+Register:
+  eyebrow: "Inscription"
+  title: "Inscription gratuite, obligatoire"
+  text: "L'entrée est gratuite, mais l'inscription est obligatoire pour des raisons d'organisation. 40 places, dans la limite des places disponibles."
+  button:
+    text: "S'inscrire (gratuit)"
+    url: https://www.billetweb.fr/soiree-devfestnoz-decembre-2026
 
 Edito:
   eyebrow: "L'édito"
