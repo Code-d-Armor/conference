@@ -24,7 +24,7 @@ Hero:
   keyart_alt: "Le public d'une édition précédente du DevFest"
   subtitle: >-
     Du dev au super dev : 25 ans de métier face aux agents.
-    Une soirée avec Fabien Canu, développeur depuis 2000 et fondateur de Koality.
+    45 minutes de talk, puis un échange ouvert et des pizzas.
 
 # Register: à ajouter dès que la billetterie de l'édition de décembre existe
 # (title / text / button1.url Billetweb). La section est rendue par _includes/tickets.html
@@ -32,28 +32,28 @@ Hero:
 
 Edito:
   eyebrow: "L'édito"
-  title: "Comment savoir qu'un code est bon quand on ne l'a pas écrit ?"
-  chapeau: >-
-    Vingt-cinq ans de métier, et une bonne partie du code désormais écrite par des agents.
-    Ce n'est pas une projection : c'est la journée de travail de Fabien Canu.
+  title: "Des agents dans le quotidien de ceux qui codent depuis vingt ans"
+  quote: "Les agents écrivent désormais une partie du code. Ils ne disent pas s'il est bon. C'est là que vingt ans de métier changent quelque chose."
   body: |
-    <p>Il a commencé vers 2000, en PHP et en HTML, sans frameworks et sans Stack Overflow. Il a traversé AJAX, Prototype.js, Polymer, Angular, React, puis l'arrivée des agents dans son quotidien. Aujourd'hui il s'est bricolé sa propre infrastructure d'IA — une mémoire qui suit tous ses projets et qui tourne pendant qu'il dort.</p>
-    <p>Le basculement soulève une question que tous ceux qui codent avec l'IA finissent par rencontrer : comment être sûr qu'un code est bon quand on ne l'a pas écrit soi-même ? La réponse tient moins à l'outil qu'aux années de pratique — repérer une solution qui part de travers, décider ce qu'on confie et ce qu'on garde, poser des garde-fous au bon endroit.</p>
-    <p>Fabien raconte ce qu'il a gagné, ce qu'il a raté, et la grille qu'il en tire : ce que vous pouvez déléguer tranquillement, ce que vous devez toujours vérifier, ce qu'il vaut mieux ne jamais lâcher. Pour un développeur qui a de la bouteille, c'est plutôt une bonne période.</p>
+    <p>Ils ont appris le métier quand il fallait tout écrire : la doc, les forums, les livres, puis Stack Overflow. Ils connaissent la valeur d'une ligne qu'on a comprise, et le prix d'une nuit passée sur un bug. Vingt ans plus tard, une partie du code de leur équipe est produite par des agents en quelques secondes, et la journée de travail ne ressemble plus tout à fait à celle qu'ils ont apprise.</p>
+    <p>La question n'est plus « comment l'écrire », mais « comment savoir que c'est juste ». Qu'est-ce qu'on confie à un agent, qu'est-ce qu'on garde sous la main, où pose-t-on les garde-fous ? Comment repère-t-on une solution qui part de travers avant qu'elle ne coûte trois semaines de dette ? Les gains sont réels — un environnement monté en deux minutes, un prototype en quelques jours quand il fallait des mois — mais ils se paient d'un travail nouveau : relire, arbitrer, assumer du code qu'on n'a pas tapé.</p>
+    <p>C'est ce basculement que raconte Fabien Canu, développeur depuis 2000 et fondateur de Koality, le 1er décembre à la Maison des Entreprises de Lannion. 45 minutes de talk, puis un échange ouvert et des pizzas pour confronter les pratiques de chacun. Une soirée co-organisée avec Anticipa, dans le cadre du programme Boost'IA.</p>
 
 Agenda:
   eyebrow: "Une soirée, un talk"
   title: Programme
-  description: "Un seul sujet, creusé à fond, puis l'apéro pour continuer la discussion."
+  description: "45 minutes de talk, puis un échange ouvert et des pizzas."
   schedule:
     - slot_begin_time: "18h30"
       duration: "30 min"
       slot_type: break
+      chip_label: Accueil
+      chip_type: pause
       title: Accueil et networking
       description: Arrivée des participant·es, café et discussions informelles.
       speakers: []
     - slot_begin_time: "19h00"
-      duration: "45 min + questions"
+      duration: "45 min"
       slot_type: talk
       title: "Du dev au super dev : 25 ans de métier face aux agents"
       description: >
@@ -67,11 +67,13 @@ Agenda:
         et ce qu'il vaut mieux ne jamais lâcher.
       speakers:
         - id: fabien_canu
-    - slot_begin_time: "20h00"
+    - slot_begin_time: "19h45"
+      chip_label: Échange
+      chip_type: pause
       duration: ""
       slot_type: break
-      title: Conclusion, apéro et networking
-      description: Clôture de la soirée, début de l'apéro et derniers échanges.
+      title: Échange ouvert, pizzas et networking
+      description: Questions, retours d'expérience et pizzas — on continue la discussion sans ordre du jour.
       speakers: []
 
 Speakers:
@@ -110,11 +112,40 @@ Details:
 Lieu:
   cards:
     - title: "Maison des Entreprises"
-      content: "Espace Corinne Erhel, 4 rue Louis de Broglie, 22300 Lannion. Accueil à 18h30, talk à 19h00, apéro à 20h00."
+      content: "Espace Corinne Erhel, 4 rue Louis de Broglie, 22300 Lannion. Accueil à 18h30, talk à 19h00, échange et pizzas à 19h45."
       link: "https://www.google.com/maps/search/4+Rue+Louis+de+Broglie+22300+Lannion"
       link_text: "Itinéraire →"
     - title: "Comment venir"
       content: "En voiture, sortie Lannion centre ; parking sur place. La Maison des Entreprises est aussi desservie par les lignes de bus du réseau TILT."
+
+CoOrganisateurs:
+  eyebrow: "Co-organisé"
+  text: "Un événement co-organisé par Code d'Armor et Anticipa, dans le cadre du programme Boost'IA."
+  logos:
+    - name: "Anticipa"
+      image: /assets/img/logos_sponsors/logo_anticipa.webp
+      link: https://www.technopole-anticipa.com/
+      tone: white
+    - name: "Boost'IA"
+      image: /assets/2026/devfestnoz/partenaires/logo-boost-ia.webp
+      tone: cream
+
+Shop:
+  title: "🏪 Boutique en ligne"
+  description: "T-shirts, hoodies, mugs et stickers à l'image du DevFest : de quoi repartir avec un souvenir et soutenir l'association."
+  photos:
+    - url: assets/2026/devfestnoz/merch/hoodie-2.webp
+      alt: Hoodie DevFest
+    - url: assets/2026/devfestnoz/merch/tshirt_1.webp
+      alt: T-shirt DevFest
+    - url: assets/2026/devfestnoz/merch/tasse.webp
+      alt: Tasse DevFest
+  button:
+    text: "Accéder à la boutique"
+    isPrimary: true
+    isExternal: true
+    target: _blank
+    url: https://devfest-perros-guirec.tpopsite.com/
 
 Newsletter:
   title: "Restez informé.e.s des prochaines actus Code d'Armor"

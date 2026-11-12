@@ -20,6 +20,7 @@
       <h1 class="hero__h">{{ page.Hero.title }}</h1>
       <p class="hero__sub">{{ page.Hero.subtitle }}</p>
       <div class="btn-row">
+        {% if page.Register %}<a href="{{ page.Register.button.url }}" class="btn btn-magenta" target="_blank" rel="noopener">{{ page.Register.button.text | default: "S'inscrire" }}</a>{% endif %}
         {% if page.Agenda %}<a href="#programme" class="btn btn-outline">Voir le programme</a>{% endif %}
         {% if page.Lieu %}<a href="#infos" class="btn btn-outline">Infos pratiques</a>{% endif %}
       </div>
@@ -30,6 +31,27 @@
   </div>
 </section>
 
+<!-- Co-organisateurs -->
+{% if page.CoOrganisateurs %}
+<section class="coorg-band" aria-label="Co-organisateurs">
+  <div class="inner">
+    <div class="coorg">
+      <div class="coorg__text">
+        <span class="eyebrow">{{ page.CoOrganisateurs.eyebrow | default: "Co-organisé" }}</span>
+        <p>{{ page.CoOrganisateurs.text }}</p>
+      </div>
+      <div class="coorg__logos">
+        {% for logo in page.CoOrganisateurs.logos %}
+        {% if logo.link %}<a href="{{ logo.link }}" target="_blank" rel="noopener" class="coorg__logo coorg__logo--{{ logo.tone | default: 'white' }}" aria-label="{{ logo.name }}">{% else %}<div class="coorg__logo coorg__logo--{{ logo.tone | default: 'white' }}">{% endif %}
+          <img src="{{site.baseurl}}{{ logo.image }}" alt="{{ logo.name }}" loading="lazy">
+        {% if logo.link %}</a>{% else %}</div>{% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+
 <!-- Edito -->
 {% if page.Edito %}
 <section class="band" id="edito">
@@ -38,10 +60,8 @@
       <span class="eyebrow">{{ page.Edito.eyebrow }}</span>
       <h2 class="section-title">{{ page.Edito.title }}</h2>
     </div>
-    <div class="grid-2" style="align-items:center;">
-      <p class="section-intro" style="font-size:19px;line-height:1.6;color:var(--fg-1);max-width:none;margin:0;">
-        {{ page.Edito.chapeau }}
-      </p>
+    <div class="grid-2" style="align-items:start;">
+      <blockquote class="pullquote reveal">{{ page.Edito.quote }}</blockquote>
       <div class="editorial-body">
         {{ page.Edito.body }}
       </div>
@@ -70,7 +90,9 @@
         </div>
         <div class="session__body">
           <div class="session__chips">
-            {% if slot.slot_type == 'talk' %}
+            {% if slot.chip_label %}
+            <span class="chip chip--{{ slot.chip_type | default: 'talk' }}">{{ slot.chip_label }}</span>
+            {% elsif slot.slot_type == 'talk' %}
             <span class="chip chip--talk">Talk</span>
             {% else %}
             <span class="chip chip--pause">Pause</span>
@@ -94,6 +116,22 @@
         </div>
       </div>
       {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Inscription -->
+{% if page.Register %}
+<section class="band band--grey" id="inscription">
+  <div class="inner">
+    <div class="section-head section-head--center reveal" style="margin-bottom:24px;">
+      <span class="eyebrow">{{ page.Register.eyebrow | default: "Inscription" }}</span>
+      <h2 class="section-title">{{ page.Register.title }}</h2>
+      <p class="section-intro" style="margin-bottom:0;">{{ page.Register.text }}</p>
+    </div>
+    <div style="text-align:center;" class="reveal">
+      <a href="{{ page.Register.button.url }}" class="btn btn-primary" target="_blank" rel="noopener">{{ page.Register.button.text | default: "S'inscrire" }}</a>
     </div>
   </div>
 </section>
@@ -139,6 +177,11 @@
 <!-- Infos pratiques -->
 {% if page.Lieu %}
 {% include lieu.html %}
+{% endif %}
+
+<!-- Boutique -->
+{% if page.Shop %}
+{% include shop.html params=page.Shop %}
 {% endif %}
 
 <!-- Newsletter -->
