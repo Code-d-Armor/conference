@@ -97,7 +97,7 @@ Speakers:
     - name: "Fabien Canu"
       id: "fabien_canu"
       organization: "Koality"
-      # photo_url: à ajouter quand la photo speaker sera dispo (assets/2026/devfestnoz/speakers/fabien.webp)
+      photo_url: "assets/2026/devfestnoz/speakers/fabien.webp"
       bio: >
         Développeur depuis vingt-cinq ans, dont quatorze à la tête de Koality, la petite agence qu'il a
         fondée, il a commencé dans le multimédia, en PHP et en HTML, à une époque où les frameworks
